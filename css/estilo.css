@@ -1,0 +1,274 @@
+/* ═══════════════════════════════════════════
+   CASA TAURO
+   Un solo archivo de estilos para todo el sitio.
+   ═══════════════════════════════════════════ */
+
+:root {
+  --cal:      #FBFAF8;
+  --tinta:    #14161C;
+  --piedra:   #78736A;
+  --linea:    #E4E0D9;
+  --anil:     #22407D;
+  --anil-osc: #1A3163;
+  --roca:     #A8613A;
+  --blanco:   #FFFFFF;
+
+  --serif: 'Newsreader', Georgia, serif;
+  --sans:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --t-xs: .75rem;  --t-sm: .875rem; --t-base: 1.0625rem;
+  --t-md: 1.25rem; --t-lg: 1.75rem; --t-xl: 2.5rem;
+  --t-hero: clamp(2.75rem, 7vw, 5.5rem);
+
+  --s-1: .5rem;  --s-2: 1rem;  --s-3: 1.5rem; --s-4: 2rem;
+  --s-5: 3rem;   --s-6: 4rem;  --s-7: 6rem;
+
+  --texto-max: 34rem;
+  --ancho-max: 78rem;
+  --borde: 1px solid var(--linea);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--cal);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: var(--t-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin: 0;
+  font-variation-settings: 'opsz' 36;
+}
+h1 { font-size: var(--t-hero); }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-lg); }
+
+p { margin: 0 0 var(--s-2); }
+a { color: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }
+:focus-visible { outline: 2px solid var(--anil); outline-offset: 3px; }
+
+.sr {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%);
+}
+
+.saltar {
+  position: absolute; left: -9999px;
+  background: var(--tinta); color: #fff;
+  padding: .75rem 1.25rem; z-index: 100;
+}
+.saltar:focus { left: 1rem; top: 1rem; }
+
+/* ── Layout ── */
+
+.contenedor {
+  width: 100%; max-width: var(--ancho-max);
+  margin-inline: auto; padding-inline: var(--s-3);
+}
+
+.prosa {
+  max-width: var(--texto-max);
+  margin-inline: auto;
+  text-align: center;
+  color: var(--piedra);
+}
+.prosa strong { color: var(--tinta); font-weight: 500; }
+
+.seccion { padding-block: var(--s-7); }
+.seccion-sin-arriba { padding-top: 0; }
+.centro { text-align: center; margin-top: var(--s-4); }
+.sangrado { width: 100%; }
+
+/* ── Botones ── */
+
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .9rem 2rem;
+  border: 1px solid var(--anil);
+  background: var(--anil);
+  color: var(--blanco);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:hover { background: var(--anil-osc); border-color: var(--anil-osc); }
+
+.btn-linea { background: transparent; color: var(--anil); }
+.btn-linea:hover { background: var(--anil); color: var(--blanco); }
+
+/* ── Header ── */
+
+.cab {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--cal);
+  border-bottom: var(--borde);
+  transition: background .3s ease, border-color .3s ease;
+}
+
+.cab-sobre {
+  position: fixed; inset-inline: 0;
+  background: transparent; border-color: transparent;
+}
+.cab-sobre .marca img { filter: brightness(0) invert(1); }
+.cab-sobre .idioma { color: #fff; }
+.cab-sobre .hamb, .cab-sobre .hamb::before, .cab-sobre .hamb::after { background-color: #fff; }
+.cab-sobre .reservar {
+  background: transparent; border-color: rgba(255,255,255,.75); color: #fff;
+}
+.cab-sobre .reservar:hover { background: #fff; color: var(--tinta); border-color: #fff; }
+
+.cab-sobre.fijo { background: var(--cal); border-bottom-color: var(--linea); }
+.cab-sobre.fijo .marca img { filter: none; }
+.cab-sobre.fijo .idioma { color: var(--tinta); }
+.cab-sobre.fijo .hamb,
+.cab-sobre.fijo .hamb::before,
+.cab-sobre.fijo .hamb::after { background-color: var(--tinta); }
+.cab-sobre.fijo .reservar { background: var(--anil); border-color: var(--anil); color: #fff; }
+
+.barra {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; gap: var(--s-2);
+  max-width: var(--ancho-max); margin-inline: auto;
+  padding: var(--s-2) var(--s-3);
+}
+
+.marca img { height: 44px; width: auto; }
+
+.der { display: flex; align-items: center; justify-content: flex-end; gap: var(--s-2); }
+
+.idioma {
+  font-size: var(--t-xs); letter-spacing: .12em;
+  text-decoration: none; color: var(--tinta);
+}
+
+.reservar { padding: .7rem 1.4rem; }
+
+.menu-btn {
+  justify-self: start; background: none; border: 0;
+  padding: var(--s-1); cursor: pointer;
+}
+.hamb, .hamb::before, .hamb::after {
+  display: block; width: 22px; height: 1px;
+  background-color: var(--tinta); content: '';
+}
+.hamb::before { transform: translateY(-7px); }
+.hamb::after  { transform: translateY(6px); }
+
+.panel { border-top: var(--borde); background: var(--cal); }
+.panel[hidden] { display: none; }
+.panel ul {
+  list-style: none; margin: 0 auto;
+  padding: var(--s-3);
+  max-width: var(--ancho-max);
+  display: grid; gap: var(--s-1);
+}
+.panel a {
+  font-family: var(--serif); font-size: var(--t-md);
+  text-decoration: none;
+}
+.panel a:hover { color: var(--anil); }
+.panel .sep { margin-top: var(--s-2); padding-top: var(--s-2); border-top: var(--borde); }
+.panel .menor a { font-family: var(--sans); font-size: var(--t-sm); color: var(--piedra); }
+
+/* ── Hero ── */
+
+.hero { position: relative; }
+.hero > img { width: 100%; height: 100svh; object-fit: cover; }
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(20,22,28,.35), rgba(20,22,28,0) 45%, rgba(20,22,28,.3));
+}
+.hero-txt {
+  position: absolute; inset-inline: 0; bottom: var(--s-7);
+  z-index: 1; text-align: center; color: #fff;
+}
+.hero-txt h1 { color: #fff; letter-spacing: .02em; }
+.hero-txt p {
+  margin-top: var(--s-2); font-size: var(--t-sm);
+  letter-spacing: .18em; text-transform: uppercase; opacity: .85;
+}
+
+/* Hero corto para páginas interiores */
+.hero-corto > img { height: 60svh; }
+.hero-corto .hero-txt { bottom: var(--s-5); }
+
+/* ── Contenido ── */
+
+.intro { font-size: var(--t-md); line-height: 1.7; }
+.video { width: 100%; max-width: 62rem; margin-inline: auto; background: var(--tinta); }
+.pie-video { margin-top: var(--s-4); }
+
+.duo {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--s-2); max-width: var(--ancho-max);
+  margin-inline: auto; padding-inline: var(--s-3);
+}
+
+/* ── Botón flotante WhatsApp ── */
+
+.flotante {
+  position: fixed; right: var(--s-3); bottom: var(--s-3); z-index: 60;
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .85rem 1.2rem;
+  background: var(--tinta); color: #fff;
+  text-decoration: none; font-size: var(--t-sm);
+  box-shadow: 0 6px 24px rgba(20,22,28,.22);
+  transition: background .2s ease;
+}
+.flotante:hover { background: var(--anil); }
+
+/* ── Footer ── */
+
+.pie { border-top: var(--borde); padding-block: var(--s-6) var(--s-3); }
+.pie-rejilla { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--s-5); }
+.pie .logo { height: 40px; width: auto; }
+.pie .lugar { color: var(--piedra); font-size: var(--t-sm); margin-top: var(--s-2); }
+.pie h2 {
+  font-family: var(--sans); font-size: var(--t-xs); font-weight: 500;
+  letter-spacing: .1em; color: var(--piedra); margin: 0 0 var(--s-2);
+}
+.pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+.pie li a { font-size: var(--t-sm); text-decoration: none; }
+.pie li a:hover { color: var(--anil); text-decoration: underline; text-underline-offset: 3px; }
+.legal {
+  max-width: var(--ancho-max); margin: var(--s-6) auto 0;
+  padding-inline: var(--s-3); font-size: var(--t-xs); color: var(--piedra);
+}
+
+/* ── Móvil ── */
+
+@media (max-width: 700px) {
+  .pie-rejilla { grid-template-columns: 1fr; gap: var(--s-4); }
+  .duo { grid-template-columns: 1fr; }
+  :root { --s-7: 4rem; }
+}
+
+@media (max-width: 640px) {
+  .reservar { padding: .6rem 1rem; font-size: var(--t-xs); }
+  .marca img { height: 36px; }
+  .flotante { padding: .95rem; border-radius: 50%; }
+  .flotante span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
