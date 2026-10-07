@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Tauro — Costa Careyes, Jalisco, México</title>
+<meta name="description" content="Refugio privado frente al Pacífico en Costa Careyes, Jalisco. Private refuge on the Mexican Pacific. Tarifas al momento de la consulta · Rates upon inquiry.">
+<meta property="og:title" content="Casa Tauro — Costa Careyes, Jalisco, México">
+<meta property="og:description" content="Seis suites, dos albercas infinitas y la selva de Costa Careyes frente al Pacífico mexicano.">
+<!-- PLACEHOLDER-DOMAIN: al publicar, anteponer https://casatauro.com.mx a la ruta del og:image -->
+<meta property="og:image" content="images/og-portada.jpg">
+<meta name="theme-color" content="#191813">
+<!--
+═══════════════════════════════════════════════════════════
+CASA TAURO · index v1 (Fase 1) · hereda arquitectura Escobedo
+Para publicar, buscar cada etiqueta:
+ ① PLACEHOLDER-BRAND  → images/logo-tauro.png (toro, PNG transparente)
+ ② PLACEHOLDER-CONTACT → email en sitio.js + footer
+ ③ PLACEHOLDER-SOCIAL → confirmar redes oficiales
+ ④ PLACEHOLDER-DOMAIN → og:image
+ FASE 5 → formulario de inquiry reemplaza la sección #consulta.
+PENDIENTES FASES 2–5: la-casa.html, ubicacion.html,
+habitaciones.html, habitacion-{tauro,venado,jabali,conejo,puma,tortuga}.html,
+areas-comunes.html, gastronomia.html, casa-escobedo.html,
+inquiry.html, privacy.html, terms.html
+═══════════════════════════════════════════════════════════
+-->
+<link rel="icon" type="image/png" href="images/logo-tauro.png">
+<link rel="apple-touch-icon" href="images/logo-tauro.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- PLACEHOLDER-FONT: «Avenir Regular» licenciada → anteponer a Montserrat cuando esté -->
+<link href="https://fonts.googleapis.com/css2?family=Belleza&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sitio.css">
+<noscript><style>.reveal,.reveal.stagger>*{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<header id="hd">
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="index.html">CASA TAURO<span>Costa Careyes · México</span></a>
+  <div class="nr">
+    <div class="langsw" role="group" aria-label="Language"><button type="button" data-l="es">ES</button><i>/</i><button type="button" data-l="en">EN</button></div>
+    <a class="btn btn-cta" href="#consulta" style="padding:14px 24px"><span class="lang es">Consultar</span><span class="lang en">Inquire</span></a>
+  </div>
+</header>
+
+<div id="mm">
+  <button id="mmX"><span class="lang es">Cerrar</span><span class="lang en">Close</span></button>
+  <a class="mlink" href="la-casa.html"><span class="lang es">La Casa</span><span class="lang en">The House</span></a>
+  <a class="mlink" href="ubicacion.html"><span class="lang es">Ubicación</span><span class="lang en">Location</span></a>
+  <div class="msub">
+    <button type="button" class="mlink-t" id="msubBtn"><span class="lang es">Habitaciones</span><span class="lang en">Accommodation</span><i>+</i></button>
+    <div class="msub-list">
+      <a href="habitaciones.html"><span class="lang es">Todas las suites</span><span class="lang en">All suites</span></a>
+      <a href="habitacion-tauro.html"><span class="lang es">Suite Tauro</span><span class="lang en">Tauro Suite</span></a>
+      <a href="habitacion-venado.html"><span class="lang es">Suite Venado</span><span class="lang en">Venado Suite</span></a>
+      <a href="habitacion-jabali.html"><span class="lang es">Suite Jabalí</span><span class="lang en">Jabalí Suite</span></a>
+      <a href="habitacion-conejo.html"><span class="lang es">Suite Conejo</span><span class="lang en">Conejo Suite</span></a>
+      <a href="habitacion-puma.html"><span class="lang es">Suite Puma</span><span class="lang en">Puma Suite</span></a>
+      <a href="habitacion-tortuga.html"><span class="lang es">Suite Tortuga</span><span class="lang en">Tortuga Suite</span></a>
+    </div>
+  </div>
+  <a class="mlink" href="areas-comunes.html"><span class="lang es">Áreas comunes</span><span class="lang en">Common areas</span></a>
+  <a class="mlink" href="gastronomia.html"><span class="lang es">Gastronomía</span><span class="lang en">Dining</span></a>
+  <a class="mlink" href="casa-escobedo.html">Casa Escobedo</a>
+  <a class="mlink" href="index.html#consulta"><span class="lang es">Consultar</span><span class="lang en">Inquire</span></a>
+  <div class="mm-foot">
+    <a class="waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener"><span class="lang es">WhatsApp · Reservas</span><span class="lang en">WhatsApp · Reservations</span></a>
+    <i>·</i><a class="mailLink" href="mailto:info@casatauro.com.mx">info@casatauro.com.mx</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img src="images/hero-portada.jpg" data-fb="ct-hero/1800/900" alt="Casa Tauro frente al Pacífico, Costa Careyes" fetchpriority="high">
+  <div class="hero-in">
+    <p class="hero-eb">Costa Careyes · Jalisco · México</p>
+    <h1>Casa<br>Tauro</h1>
+    <p class="hero-sub">
+      <span class="lang es">Un refugio privado frente al Pacífico mexicano: seis suites, dos albercas infinitas y la selva de Costa Careyes, siempre en contacto con la naturaleza.</span>
+      <span class="lang en">A private refuge on the Mexican Pacific: six suites, two infinity pools and the jungle of Costa Careyes, always in touch with nature.</span>
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-light" href="#consulta"><span class="lang es">Iniciar consulta</span><span class="lang en">Begin an inquiry</span></a>
+      <a class="btn btn-ghost" href="#intro"><span class="lang es">Descubrir la casa</span><span class="lang en">Discover the house</span></a>
+    </div>
+  </div>
+  <div class="cue"></div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="section" id="intro">
+  <div class="wrap narrow center reveal">
+    <p class="eyebrow"><span class="lang es">Bienvenidos</span><span class="lang en">Welcome</span></p>
+    <p class="lede">
+      <span class="lang es">«Donde la selva<br>encuentra al Pacífico.»</span>
+      <span class="lang en">“Where the jungle<br>meets the Pacific.”</span>
+    </p>
+    <div class="body">
+      <p>
+        <span class="lang es">Casa Tauro es un espacio exclusivo sin igual, con las más hermosas playas de arena blanca, aguas turquesas y selva natural. Su arquitectura contemporánea de estilo mexicano moderno abraza el paisaje con albercas infinitas, amplias terrazas y las vistas más espectaculares del océano Pacífico.</span>
+        <span class="lang en">Casa Tauro is an unparalleled exclusive space, home to the most beautiful white-sand beaches, turquoise waters and natural jungle. Its contemporary architecture in a modern Mexican style embraces the landscape with infinity pools, vast terraces and the most spectacular views of the Pacific Ocean.</span>
+      </p>
+      <p>
+        <span class="lang es">Ya sea para descansar, celebrar o entregarse a la buena mesa, nuestro equipo diseña cada estancia a la medida, con todas las comodidades y un servicio de excelencia.</span>
+        <span class="lang en">Whether to rest, celebrate or indulge in the pleasure of the table, our team designs every stay to measure, with every comfort and excellent service.</span>
+      </p>
+    </div>
+    <!-- PLACEHOLDER-BRAND: images/logo-tauro.png (sello del toro, fondo transparente) -->
+    <img class="seal-img seal-mini" src="images/logo-tauro.png" alt="Casa Tauro">
+  </div>
+</section>
+
+<!-- ============ BANDA EDITORIAL ============ -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="gal editgrid reveal stagger">
+      <figure class="g-big">
+        <img src="images/intro-1.jpg" data-fb="ct-intro1/1800/1200" alt="" loading="lazy">
+        <figcaption><span class="lang es">La alberca infinita</span><span class="lang en">The infinity pool</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/intro-2.jpg" data-fb="ct-intro2/1200/900" alt="" loading="lazy">
+        <figcaption><span class="lang es">Terrazas al Pacífico</span><span class="lang en">Terraces over the Pacific</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/intro-3.jpg" data-fb="ct-intro3/1200/900" alt="" loading="lazy">
+        <figcaption><span class="lang es">Rooftop con asador</span><span class="lang en">Rooftop grill</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIFRAS + TEASERS ============ -->
+<section class="section" id="descubre">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow"><span class="lang es">La propiedad</span><span class="lang en">The property</span></p>
+      <h2><span class="lang es">Dos casas, un mismo espíritu</span><span class="lang en">Two houses, one spirit</span></h2>
+    </div>
+    <div class="stats reveal stagger">
+      <div class="stat"><b>6</b><span><span class="lang es">Suites</span><span class="lang en">Suites</span></span></div>
+      <div class="stat"><b>12</b><span><span class="lang es">Huéspedes (hasta)</span><span class="lang en">Guests (up to)</span></span></div>
+      <div class="stat"><b>2</b><span><span class="lang es">Albercas infinitas</span><span class="lang en">Infinity pools</span></span></div>
+      <div class="stat"><b>1</b><span><span class="lang es">Rooftop con asador</span><span class="lang en">Rooftop with grill</span></span></div>
+    </div>
+    <div class="teasers reveal stagger">
+      <a class="teaser" href="la-casa.html">
+        <div class="ph"><img src="images/teaser-casa.jpg" data-fb="ct-t-casa/1200/900" alt="" loading="lazy"></div>
+        <figcaption>
+          <i>01</i>
+          <b><span class="lang es">La Casa</span><span class="lang en">The House</span></b>
+          <p><span class="lang es">Casa Tauro y Casita Palmar: seis suites frente al mar, terrazas y espacios que respiran naturaleza.</span><span class="lang en">Casa Tauro and Casita Palmar: six ocean-view suites, terraces and spaces that breathe nature.</span></p>
+          <span class="tlink"><span class="lang es">Descubrir →</span><span class="lang en">Discover →</span></span>
+        </figcaption>
+      </a>
+      <a class="teaser" href="habitaciones.html">
+        <div class="ph"><img src="images/teaser-habitaciones.jpg" data-fb="ct-t-hab/1200/900" alt="" loading="lazy"></div>
+        <figcaption>
+          <i>02</i>
+          <b><span class="lang es">Habitaciones</span><span class="lang en">Accommodation</span></b>
+          <p><span class="lang es">Seis suites con terraza privada y vista al mar: Tauro, Venado, Jabalí, Conejo, Puma y Tortuga.</span><span class="lang en">Six suites with private terrace and ocean view: Tauro, Venado, Jabalí, Conejo, Puma and Tortuga.</span></p>
+          <span class="tlink"><span class="lang es">Descubrir →</span><span class="lang en">Discover →</span></span>
+        </figcaption>
+      </a>
+      <a class="teaser" href="gastronomia.html">
+        <div class="ph"><img src="images/teaser-gastronomia.jpg" data-fb="ct-t-gastro/1200/900" alt="" loading="lazy"></div>
+        <figcaption>
+          <i>03</i>
+          <b><span class="lang es">Gastronomía</span><span class="lang en">Dining</span></b>
+          <p><span class="lang es">Cocina mexicana e internacional con ingredientes locales: cenas en la playa, asados en el rooftop y picnics.</span><span class="lang en">Mexican and international cuisine with local ingredients: beach dinners, rooftop grills and picnics.</span></p>
+          <span class="tlink"><span class="lang es">Descubrir →</span><span class="lang en">Discover →</span></span>
+        </figcaption>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSULTA ============ -->
+<section class="section dark center" id="consulta">
+  <div class="wrap narrow reveal">
+    <p class="eyebrow"><span class="lang es">Reservas</span><span class="lang en">Reservations</span></p>
+    <h2><span class="lang es">Diseñemos su estancia</span><span class="lang en">Let’s design your stay</span></h2>
+    <p class="body">
+      <span class="lang es">Cuéntenos sus fechas y la ocasión; nuestro equipo responde personalmente con disponibilidad y tarifas. Tarifas al momento de la consulta · Rates upon inquiry.</span>
+      <span class="lang en">Tell us your dates and the occasion; our team will reply personally with availability and rates. Rates upon inquiry.</span>
+    </p>
+    <div class="chips">
+      <span><span class="lang es">Check-in 15:00</span><span class="lang en">Check-in 3:00 PM</span></span>
+      <span><span class="lang es">Check-out 12:00</span><span class="lang en">Check-out 12:00 PM</span></span>
+      <span><span class="lang es">Tarifas al consultar</span><span class="lang en">Rates upon inquiry</span></span>
+    </div>
+    <p class="fine2">
+      <span class="lang es">En periodos selectos de días festivos aplica estancia mínima en casa completa; los periodos se confirman al consultar.</span>
+      <span class="lang en">During select holiday periods, a minimum stay of the entire property applies; periods are confirmed upon inquiry.</span>
+    </p>
+    <!-- FASE 5: aquí se integrará el formulario de inquiry (calendario simple fechas + mensaje, envío WhatsApp/email + confirmación). -->
+    <div class="cta">
+      <a class="btn btn-brand waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener"><span class="lang es">WhatsApp · Reservas</span><span class="lang en">WhatsApp · Reservations</span></a>
+      <a class="btn btn-light mailLink" href="mailto:info@casatauro.com.mx">info@casatauro.com.mx</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div class="fbrand">
+      <p class="fw">CASA TAURO</p>
+      <p><span class="lang es">Costa Careyes, Jalisco, México. Refugio privado frente al Pacífico, con la hospitalidad cálida de la Costa Alegre.</span><span class="lang en">Costa Careyes, Jalisco, México. A private refuge on the Pacific, with the warm hospitality of the Costa Alegre.</span></p>
+      <!-- PLACEHOLDER-BRAND: images/logo-tauro.png (sello del toro, fondo transparente) -->
+      <img class="seal-img" src="images/logo-tauro.png" alt="Casa Tauro">
+    </div>
+    <div>
+      <h5><span class="lang es">Contacto</span><span class="lang en">Contact</span></h5>
+      <ul>
+        <li>Costa Careyes, Jalisco, México</li>
+        <li><a class="waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener">WhatsApp · +52 449 890 5064</a></li>
+        <li><a class="mailLink" href="mailto:info@casatauro.com.mx">info@casatauro.com.mx</a></li>
+        <!-- PLACEHOLDER-SOCIAL: confirmar cuentas oficiales (brochure: IG @casatauro_ · FB @casataurocostalegre) -->
+        <li><a href="https://instagram.com/casatauro_" target="_blank" rel="noopener">Instagram · @casatauro_</a></li>
+        <li><a href="https://facebook.com/casataurocostalegre" target="_blank" rel="noopener">Facebook · @casataurocostalegre</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span class="lang es">La casa</span><span class="lang en">The house</span></h5>
+      <ul>
+        <li><a href="la-casa.html"><span class="lang es">La Casa</span><span class="lang en">The House</span></a></li>
+        <li><a href="ubicacion.html"><span class="lang es">Ubicación</span><span class="lang en">Location</span></a></li>
+        <li><a href="habitaciones.html"><span class="lang es">Habitaciones</span><span class="lang en">Accommodation</span></a></li>
+        <li><a href="areas-comunes.html"><span class="lang es">Áreas comunes</span><span class="lang en">Common areas</span></a></li>
+        <li><a href="gastronomia.html"><span class="lang es">Gastronomía</span><span class="lang en">Dining</span></a></li>
+        <li><a href="casa-escobedo.html">Casa Escobedo</a></li>
+        <li><a href="index.html#consulta"><span class="lang es">Consultar</span><span class="lang en">Inquire</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fbot">
+    <span>© 2026 Casa Tauro · Costa Careyes, Jalisco, México</span>
+    <span><a href="privacy.html"><span class="lang es">Aviso de privacidad</span><span class="lang en">Privacy notice</span></a> · <a href="terms.html"><span class="lang es">Términos y condiciones</span><span class="lang en">Terms &amp; conditions</span></a></span>
+    <span><a href="https://wdstudio.agency" target="_blank" rel="noopener">by WD Studio Agency</a></span>
+  </div>
+</footer>
+
+<a id="waFloat" class="waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="sitio.js"></script>
+</body>
+</html>
