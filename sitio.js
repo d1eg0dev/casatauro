@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   CASA TAURO — sitio.js · v1 (Fase 1)
+   CASA TAURO — sitio.js · v1.1 (Fase 2)
    Motor compartido por TODAS las páginas (incluido index).
    · i18n ES/EN (localStorage 'ct-lang') + red de seguridad
    · Menú hamburguesa fullscreen + submenu (.msub)
@@ -8,12 +8,22 @@
    · Fallback de imágenes data-fb → picsum
    · Enlaces .waLink / .mailLink
    · Lightbox por grupos (.gal) y modo solo (hero, data-lb)
+
+   CONFIG FASE 5 (inquiry, documentado aquí para no perderlo):
+   · MIN_LOW = 2 noches (temporada regular) — CONFIRMADO
+   · MIN_HIGH = 7 noches · alta temporada = SOLO casa completa
+   · Alta temporada: Semana Santa/Pascua + Navidad/Año Nuevo
+     (las fechas específicas NUNCA se publican en la web)
+   · Depósito 50% · saldo 7 días antes de la llegada
+   · Precios siempre + impuestos · tarifas upon inquiry
    ═══════════════════════════════════════════════════════════ */
 (function(){
 'use strict';
 var WA_NUMBER='524498905064';           /* +52 449 890 5064 */
-var MAIL='info@casatauro.com.mx';       /* PLACEHOLDER-CONTACT: confirmar email de reservas */
-var LANG_KEY='ct-lang';                 /* NUEVA clave (antes ce-lang en Escobedo) */
+/* PLACEHOLDER-CONTACT: crear info@casatauro.com y redirigir a
+   info@casatauro.com.mx. Si no se crea, revertir a '.com.mx' aquí. */
+var MAIL='info@casatauro.com';
+var LANG_KEY='ct-lang';                 /* clave propia de Tauro (no ce-lang) */
 
 /* ---------- i18n ---------- */
 function applyLang(x){
@@ -45,7 +55,7 @@ if(burger)burger.addEventListener('click',function(){mm.classList.contains('open
 if(mmX)mmX.addEventListener('click',menuClose);
 if(mm){
   mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',menuClose);});
-  var msubBtn=document.getElementById('msubBtn');   /* toggle del submenu — SIEMPRE junto al menú */
+  var msubBtn=document.getElementById('msubBtn');   /* toggle submenu: SIEMPRE junto al menú */
   if(msubBtn)msubBtn.addEventListener('click',function(){
     msubBtn.closest('.msub').classList.toggle('open');
   });
