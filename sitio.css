@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════
    CASA TAURO · sitio.css · v1.1 — Fases 1–2
-   Paleta DORADA: #D5C55A acento · #8A7F5A hover/texto en claro
+   Paleta ARENA CÁLIDA: #C6A57A acento · #8F7150 hover/texto en claro   
    Tipos: Belleza (display) + Montserrat light (UI)
    PLACEHOLDER-FONT: «Avenir Regular» licenciada — cuando esté,
    anteponer 'Avenir' en --sans (Montserrat queda como sustituto).
@@ -17,9 +17,9 @@
   --card:#ffffff;
   --ink:#191813;       /* negro cálido (texto) */
   --ink2:#5d5a50;
-  --caqui:#D5C55A;     /* DORADO principal — botones, bordes, acentos */
-  --caquiD:#8A7F5A;    /* dorado oscuro — hover + acentos de TEXTO sobre claro */
-  --caquiL:#E9E29F;    /* dorado pálido — acentos sobre fondos oscuros */
+ --caqui:#C6A57A;     /* acento principal — botones, bordes, acentos */
+  --caquiD:#8F7150;    /* acento oscuro — hover + acentos de TEXTO sobre claro */
+  --caquiL:#E3D1B5;    /* acento pálido — acentos sobre fondos oscuros */
   --line:rgba(25,24,19,.15);
   --disp:'Belleza',Georgia,serif;
   --sans:'Montserrat','Avenir Next','Avenir',system-ui,-apple-system,sans-serif;
