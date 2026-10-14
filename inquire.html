@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consulta — Casa Tauro</title>
+<meta name="description" content="Consulta de disponibilidad en Casa Tauro, Costa Careyes. Tarifas al momento de la consulta · Rates upon inquiry. Check-in 15:00 · Check-out 12:00.">
+<meta name="theme-color" content="#191813">
+<link rel="icon" type="image/png" href="images/logo-tauro.png">
+<link rel="apple-touch-icon" href="images/logo-tauro.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Belleza&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sitio.css">
+<style>
+/* ═══ Estilos propios de la página de consulta ═══ */
+.book{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:56px;align-items:start}
+.calbox,.formbox{border:1px solid var(--line);background:var(--card);padding:30px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-range{font-family:var(--disp);font-size:1.25rem;min-height:24px}
+.cal-nav{width:38px;height:38px;border:1px solid var(--line);background:none;cursor:pointer;font-size:17px;color:var(--ink);transition:.25s;display:grid;place-items:center}
+.cal-nav:hover:not([disabled]){background:var(--ink);color:var(--paper)}
+.cal-nav[disabled]{opacity:.25;cursor:default}
+.months{display:grid;grid-template-columns:1fr 1fr}
+.month{padding:12px 8px}
+.month+.month{border-left:1px solid var(--line)}
+.m-title{text-align:center;font-family:var(--disp);font-size:1.02rem;margin-bottom:10px;min-height:22px}
+.m-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.wd{text-align:center;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding:6px 0}
+.pad{aspect-ratio:1}
+.day{position:relative;aspect-ratio:1;display:grid;place-items:center;background:none;border:0;font:300 12px var(--sans);cursor:pointer;color:var(--ink);transition:background .2s}
+.day:hover:not(.off):not([disabled]){background:rgba(198,165,122,.28)}
+.day.off{opacity:.18;cursor:default}
+.day.high::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:3.5px;height:3.5px;border-radius:50%;background:var(--caquiD)}
+.day.rng{background:rgba(198,165,122,.18)}
+.day.sel{background:var(--caqui);font-weight:400}
+.day.sel.high::after{background:var(--ink)}
+.legend{display:flex;gap:20px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:16px;flex-wrap:wrap}
+.legend i{width:8px;height:8px;border-radius:50%;background:var(--caquiD);display:inline-block;margin-right:7px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
+.field input,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 2px;color:var(--ink);font:300 15px var(--sans);border-radius:0;transition:border-color .3s}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--caquiD)}
+.field textarea{resize:vertical;min-height:70px}
+.sum{border-top:1px solid var(--line);margin-top:6px;padding-top:20px}
+.srow{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.srow span{color:var(--ink2)}
+.srow b{font-weight:400;text-align:right}
+.smsg{font-size:12.5px;line-height:1.8;margin-top:14px}
+.smsg.ok{color:var(--ink2)}
+.smsg.err{color:#a3402e}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.confirm{max-width:680px;margin:56px auto 0;border:1px solid var(--line);background:var(--card);padding:44px 40px;text-align:center;display:none}
+.confirm.show{display:block}
+.cref{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--caquiD);margin:6px 0 26px}
+.cbox{text-align:left;border:1px solid var(--line);padding:22px 24px;margin-bottom:26px;white-space:pre-wrap;font-size:13px;line-height:1.9;color:var(--ink2)}
+.confirm>p{font-size:13.5px;color:var(--ink2);max-width:480px;margin:0 auto 14px}
+@media(max-width:900px){
+  .book{grid-template-columns:1fr}
+  .months{grid-template-columns:1fr}
+  .month+.month{border-left:0;border-top:1px solid var(--line)}
+}
+</style>
+<noscript><style>.reveal,.reveal.stagger>*{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<header id="hd">
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand" href="index.html">CASA TAURO<span>Costalegre · México</span></a>
+  <div class="nr">
+    <div class="langsw" role="group" aria-label="Language"><button type="button" data-l="es">ES</button><i>/</i><button type="button" data-l="en">EN</button></div>
+    <a class="btn btn-cta" href="inquiry.html" style="padding:14px 24px"><span class="lang es">Consultar</span><span class="lang en">Inquire</span></a>
+  </div>
+</header>
+
+<div id="mm">
+  <button id="mmX"><span class="lang es">Cerrar</span><span class="lang en">Close</span></button>
+  <a class="mlink" href="la-casa.html"><span class="lang es">La Casa</span><span class="lang en">The House</span></a>
+  <a class="mlink" href="ubicacion.html"><span class="lang es">Ubicación</span><span class="lang en">Location</span></a>
+  <div class="msub">
+    <button type="button" class="mlink-t" id="msubBtn"><span class="lang es">Habitaciones</span><span class="lang en">Accommodation</span><i>+</i></button>
+    <div class="msub-list">
+      <a href="habitaciones.html"><span class="lang es">Todas las suites</span><span class="lang en">All suites</span></a>
+      <a href="habitacion-tauro.html"><span class="lang es">Suite Tauro</span><span class="lang en">Tauro Suite</span></a>
+      <a href="habitacion-venado.html"><span class="lang es">Suite Venado</span><span class="lang en">Venado Suite</span></a>
+      <a href="habitacion-jabali.html"><span class="lang es">Suite Jabalí</span><span class="lang en">Jabalí Suite</span></a>
+      <a href="habitacion-conejo.html"><span class="lang es">Suite Conejo</span><span class="lang en">Conejo Suite</span></a>
+      <a href="habitacion-puma.html"><span class="lang es">Suite Puma</span><span class="lang en">Puma Suite</span></a>
+      <a href="habitacion-tortuga.html"><span class="lang es">Suite Tortuga</span><span class="lang en">Tortuga Suite</span></a>
+    </div>
+  </div>
+  <a class="mlink" href="areas-comunes.html"><span class="lang es">Áreas comunes</span><span class="lang en">Common areas</span></a>
+  <a class="mlink" href="gastronomia.html"><span class="lang es">Gastronomía</span><span class="lang en">Dining</span></a>
+  <a class="mlink" href="casa-escobedo.html">Casa Escobedo</a>
+  <a class="mlink" href="inquiry.html"><span class="lang es">Consultar</span><span class="lang en">Inquire</span></a>
+  <div class="mm-foot">
+    <a class="waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener"><span class="lang es">WhatsApp · Reservas</span><span class="lang en">WhatsApp · Reservations</span></a>
+    <i>·</i><a class="mailLink" href="mailto:contact@casatauro.com">contact@casatauro.com</a>
+  </div>
+</div>
+
+<!-- HERO — identidad: usa una imagen ya subida. Para cambiarla, edita el src
+     (p. ej. images/intro-1.jpg o images/comun-hero.jpg). -->
+<section class="hero inner">
+  <img src="images/hero-portada.jpg" data-fb="ct-inqhero/1800/900" alt="Casa Tauro — Consulta de disponibilidad">
+</section>
+
+<main>
+  <div class="wrap">
+    <p class="eb"><span class="lang es">Reservas</span><span class="lang en">Reservations</span></p>
+    <h1><span class="lang es">Consulta de disponibilidad</span><span class="lang en">Availability inquiry</span></h1>
+    <div class="chips start">
+      <span><span class="lang es">Check-in 15:00</span><span class="lang en">Check-in 3:00 PM</span></span>
+      <span><span class="lang es">Check-out 12:00</span><span class="lang en">Check-out 12:00 PM</span></span>
+      <span><span class="lang es">Mínimo 2 noches</span><span class="lang en">2-night minimum</span></span>
+      <span><span class="lang es">Tarifas al consultar</span><span class="lang en">Rates upon inquiry</span></span>
+    </div>
+    <p class="lead">
+      <span class="lang es">Elige tus fechas en el calendario, cuéntanos de tu viaje y nuestro equipo responde personalmente con disponibilidad, tarifas y detalles. Tarifas al momento de la consulta, más impuestos.</span>
+      <span class="lang en">Choose your dates on the calendar, tell us about your trip and our team will reply personally with availability, rates and details. Rates upon inquiry, plus taxes.</span>
+    </p>
+
+    <div class="book" id="book">
+      <!-- ═══ CALENDARIO ═══ -->
+      <div class="calbox reveal">
+        <div class="cal-head">
+          <div class="cal-range" id="outRange"></div>
+          <div>
+            <button class="cal-nav" id="calPrev" type="button" aria-label="Anterior">‹</button>
+            <button class="cal-nav" id="calNext" type="button" aria-label="Siguiente">›</button>
+          </div>
+        </div>
+        <div class="months" id="months"></div>
+        <div class="legend">
+          <span><i></i><span class="lang es">Periodos selectos de días festivos</span><span class="lang en">Select holiday periods</span></span>
+        </div>
+        <p class="note">
+          <span class="lang es">En periodos selectos aplica estancia mínima de 7 noches y renta de la propiedad completa. Los periodos exactos se confirman al momento de la consulta.</span>
+          <span class="lang en">Select holiday periods require a 7-night minimum stay of the entire property. Exact periods are confirmed upon inquiry.</span>
+        </p>
+      </div>
+
+      <!-- ═══ FORMULARIO + RESUMEN ═══ -->
+      <div class="formbox reveal" id="formbox">
+        <div class="field">
+          <label for="fName"><span class="lang es">Nombre</span><span class="lang en">Name</span></label>
+          <input id="fName" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="fMail">Email</label>
+          <input id="fMail" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label><span class="lang es">Teléfono (opcional)</span><span class="lang en">Phone (optional)</span></label>
+          <input id="fTel" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label><span class="lang es">Ocasión / mensaje</span><span class="lang en">Occasion / message</span></label>
+          <textarea id="fMsg" placeholder=""></textarea>
+          <!-- PLACEHOLDER-PLACEHOLDER: opcional; si quieres hints, añade placeholder bilingüe con spans -->
+        </div>
+
+        <div class="sum">
+          <div class="srow"><span><span class="lang es">Entrada</span><span class="lang en">Check-in</span></span><b id="outIn">—</b></div>
+          <div class="srow"><span><span class="lang es">Salida</span><span class="lang en">Check-out</span></span><b id="outOut">—</b></div>
+          <div class="srow"><span><span class="lang es">Noches</span><span class="lang en">Nights</span></span><b id="outNights">—</b></div>
+        </div>
+        <p class="smsg ok" id="outMsg"></p>
+
+        <div class="actions">
+          <a class="btn btn-brand" id="btnWA" href="#" target="_blank" rel="noopener"><span class="lang es">Enviar por WhatsApp</span><span class="lang en">Send via WhatsApp</span></a>
+          <a class="btn btn-ink" id="btnMail" href="#"><span class="lang es">Enviar por email</span><span class="lang en">Send via email</span></a>
+        </div>
+        <p class="note">
+          <span class="lang es">Depósito del 50% para confirmar; saldo 7 días antes de la llegada. Precios más impuestos. Sin pagos en línea.</span>
+          <span class="lang en">50% deposit to confirm; balance due 7 days before arrival. Prices plus taxes. No online payments.</span>
+        </p>
+
+        <noscript>
+          <p class="note">
+            <span class="lang es">Activa JavaScript para usar el calendario, o escríbenos directamente:</span>
+            <span class="lang en">Enable JavaScript to use the calendar, or write to us directly:</span><br>
+            WhatsApp <a href="https://wa.me/524498905064" target="_blank" rel="noopener">+52 449 890 5064</a> ·
+            <a href="mailto:contact@casatauro.com">contact@casatauro.com</a>
+          </p>
+        </noscript>
+      </div>
+    </div>
+
+    <!-- ═══ CONFIRMACIÓN ═══ -->
+    <div class="confirm" id="confirm">
+      <p class="eb" style="margin-bottom:4px"><span class="lang es">Consulta registrada</span><span class="lang en">Inquiry submitted</span></p>
+      <p class="cref" id="cRef"></p>
+      <div class="cbox" id="cBox"></div>
+      <p><span class="lang es">Tu consulta se abrió en WhatsApp o en tu correo. Si no se abrió automáticamente, usa los botones:</span><span class="lang en">Your inquiry opened in WhatsApp or your email app. If it did not open automatically, use the buttons:</span></p>
+      <div class="actions" style="justify-content:center">
+        <a class="btn btn-brand" id="cWA" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ink" id="cMail" href="#">Email</a>
+      </div>
+      <div class="actions" style="justify-content:center">
+        <button class="btn btn-ink" type="button" id="cNew"><span class="lang es">Nueva consulta</span><span class="lang en">New inquiry</span></button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fgrid">
+    <div class="fbrand">
+      <p class="fw">CASA TAURO</p>
+      <p><span class="lang es">Costa Careyes, Jalisco, México. Refugio privado frente al Pacífico, con la hospitalidad cálida de la Costa Alegre.</span><span class="lang en">Costa Careyes, Jalisco, México. A private refuge on the Pacific, with the warm hospitality of the Costa Alegre.</span></p>
+      <img class="seal-img" src="images/logo-tauro.png" alt="Casa Tauro">
+    </div>
+    <div>
+      <h5><span class="lang es">Contacto</span><span class="lang en">Contact</span></h5>
+      <ul>
+        <li>Costa Careyes, Jalisco, México</li>
+        <li><a class="waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener">WhatsApp · +52 449 890 5064</a></li>
+        <li><a class="mailLink" href="mailto:contact@casatauro.com">contact@casatauro.com</a></li>
+        <li><a href="https://instagram.com/casatauro_" target="_blank" rel="noopener">Instagram · @casatauro_</a></li>
+        <li><a href="https://facebook.com/casataurocostalegre" target="_blank" rel="noopener">Facebook · @casataurocostalegre</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5><span class="lang es">La casa</span><span class="lang en">The house</span></h5>
+      <ul>
+        <li><a href="la-casa.html"><span class="lang es">La Casa</span><span class="lang en">The House</span></a></li>
+        <li><a href="ubicacion.html"><span class="lang es">Ubicación</span><span class="lang en">Location</span></a></li>
+        <li><a href="habitaciones.html"><span class="lang es">Habitaciones</span><span class="lang en">Accommodation</span></a></li>
+        <li><a href="areas-comunes.html"><span class="lang es">Áreas comunes</span><span class="lang en">Common areas</span></a></li>
+        <li><a href="gastronomia.html"><span class="lang es">Gastronomía</span><span class="lang en">Dining</span></a></li>
+        <li><a href="casa-escobedo.html">Casa Escobedo</a></li>
+        <li><a href="inquiry.html"><span class="lang es">Consultar</span><span class="lang en">Inquire</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap fbot">
+    <span>© 2026 Casa Tauro · Costa Careyes, Jalisco, México</span>
+    <span><a href="privacy.html"><span class="lang es">Aviso de privacidad</span><span class="lang en">Privacy notice</span></a> · <a href="terms.html"><span class="lang es">Términos y condiciones</span><span class="lang en">Terms &amp; conditions</span></a></span>
+    <span><a href="https://wdstudio.agency" target="_blank" rel="noopener">by WD Studio Agency</a></span>
+  </div>
+</footer>
+
+<a id="waFloat" class="waLink" href="https://wa.me/524498905064" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="sitio.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CASA TAURO — inquiry.js (inline)
+   Calendario 2 meses · rango entrada/salida · MIN_LOW=2 ·
+   MIN_HIGH=7 (auto nota: propiedad completa) · alta marcada
+   con puntos (fechas exactas NUNCA se publican en texto) ·
+   envío WhatsApp + email · confirmación con referencia.
+   BACKEND (Apps Script) EN ESPERA: cuando esté listo, definir
+   SCRIPT_URL y descomentar el bloque marcado más abajo.
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+var WA='524498905064', MAIL='contact@casatauro.com';
+var MIN_LOW=2, MIN_HIGH=7;
+/* AJUSTAR-ALTA: rangos de temporada alta (año, mes 1-12, día).
+   Semana Santa + Semana de Pascua · Navidad y Año Nuevo.
+   Solo alimentan los PUNTOS del calendario y la regla 7 noches;
+   el texto del sitio nunca enumera fechas. */
+var HIGH=[
+  {a:[2025,4,13], b:[2025,4,27]},
+  {a:[2025,12,18],b:[2026,1,6]},
+  {a:[2026,3,29], b:[2026,4,12]},
+  {a:[2026,12,18],b:[2027,1,6]},
+  {a:[2027,3,21], b:[2027,4,4]}
+];
+var MN={es:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+        en:['January','February','March','April','May','June','July','August','September','October','November','December']};
+var WD={es:['D','L','M','M','J','V','S'],en:['S','M','T','W','T','F','S']};
+var T={
+  es:{nights:'Noches',min:'Mínimo',sel:'Selecciona tus fechas en el calendario',pickEnd:'Elige la fecha de salida',
+      few:'Estancia mínima de {n} noches{h}.',full:' · propiedad completa',need:'Completa nombre y email para enviar.',
+      sent:'Consulta enviada por {ch}. Te responderemos personalmente.',wa:'WhatsApp',mail:'email',
+      in:'Entrada',out:'Salida',ph:'Ocasión / mensaje'},
+  en:{nights:'Nights',min:'Minimum',sel:'Select your dates on the calendar',pickEnd:'Now choose your check-out date',
+      few:'{n}-night minimum stay{h}.',full:' · entire property',need:'Please add your name and email to send.',
+      sent:'Inquiry submitted via {ch}. We will reply personally.',wa:'WhatsApp',mail:'email',
+      in:'Check-in',out:'Check-out',ph:'Occasion / message'}
+};
+function $id(i){return document.getElementById(i)}
+function lang(){return document.documentElement.lang==='en'?'en':'es'}
+function nd(a){return new Date(a[0],a[1]-1,a[2])}
+function d2n(d){return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+function isHigh(d){var n=d2n(d),i;for(i=0;i<HIGH.length;i++){if(n>=d2n(nd(HIGH[i].a))&&n<=d2n(nd(HIGH[i].b)))return true}return false}
+function fmt(d){try{return new Intl.DateTimeFormat(lang()==='en'?'en-GB':'es-MX',{day:'numeric',month:'short',year:'numeric'}).format(d)}catch(e){return d.toISOString().slice(0,10)}}
+function sameD(a,b){return a&&b&&d2n(a)===d2n(b)}
+function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+
+var start=null,end=null;
+var today=new Date();today.setHours(0,0,0,0);
+var cur=new Date(today.getFullYear(),today.getMonth(),1);
+var MAX=new Date(today.getFullYear(),today.getMonth()+12,1);
+
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+
+function renderCal(){
+  var box=$id('months');box.innerHTML='';
+  var m,mx,d,grid,i,dayBtn;
+  var first=WD[lang()];
+  for(mx=0;mx<2;mx++){
+    m=new Date(cur.getFullYear(),cur.getMonth()+mx,1);
+    var mBox=el('div','month');
+    var title=el('div','m-title');
+    var s1=el('span','lang es',MN.es[m.getMonth()]+' '+m.getFullYear());
+    var s2=el('span','lang en',MN.en[m.getMonth()]+' '+m.getFullYear());
+    title.appendChild(s1);title.appendChild(s2);mBox.appendChild(title);
+    grid=el('div','m-grid');
+    for(i=0;i<7;i++){var w=el('div','wd');w.appendChild(el('span','lang es',WD.es[i]));w.appendChild(el('span','lang en',WD.en[i]));grid.appendChild(w)}
+    for(i=0;i<m.getDay();i++)grid.appendChild(el('span','pad'));
+    for(d=1;d<=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();d++){
+      var dt=new Date(m.getFullYear(),m.getMonth(),d);
+      if(dt<today){grid.appendChild(el('span','pad'));continue}
+      dayBtn=el('button','day'+(isHigh(dt)?' high':''),String(d));
+      dayBtn.type='button';
+      dayBtn.setAttribute('aria-label',d+' '+MN[lang()][m.getMonth()]);
+      if(start&&end&&dt>start&&dt<end)dayBtn.classList.add('rng');
+      if(sameD(dt,start)||sameD(dt,end))dayBtn.classList.add('sel');
+      (function(dt){dayBtn.addEventListener('click',function(){pick(dt)})})(dt);
+      grid.appendChild(dayBtn);
+    }
+    mBox.appendChild(grid);box.appendChild(mBox);
+  }
+  $id('calPrev').disabled=cur<=new Date(today.getFullYear(),today.getMonth(),1);
+  $id('calNext').disabled=cur>=MAX;
+}
+function pick(d){
+  if(!start||(start&&end)){start=d;end=null}
+  else if(d<=start){start=d;end=null}
+  else{end=d}
+  render();
+}
+function nights(){return end?Math.round((end-start)/86400000):0}
+function touchesHigh(){
+  if(!start||!end)return false;
+  var d=new Date(start);
+  while(d<=end){if(isHigh(d))return true;d=addDays(d,1)}
+  return false;
+}
+function payload(ref){
+  var L=lang(),t=T[L];
+  var lines=L==='en'?[
+    'Reservation inquiry — Casa Tauro','Ref: '+ref,
+    'Check-in: '+fmt(start),'Check-out: '+fmt(end),'Nights: '+nights(),
+    'Name: '+$id('fName').value.trim(),'Email: '+$id('fMail').value.trim(),
+    'Phone: '+($id('fTel').value.trim()||'-'),
+    'Message: '+($id('fMsg').value.trim()||'-')
+  ]:[
+    'Consulta de reserva — Casa Tauro','Ref: '+ref,
+    'Entrada: '+fmt(start),'Salida: '+fmt(end),'Noches: '+nights(),
+    'Nombre: '+$id('fName').value.trim(),'Email: '+$id('fMail').value.trim(),
+    'Teléfono: '+($id('fTel').value.trim()||'-'),
+    'Mensaje: '+($id('fMsg').value.trim()||'-')
+  ];
+  return lines.join('\n');
+}
+function render(){
+  var L=lang(),t=T[L];
+  renderCal();
+  /* rango mostrado */
+  $id('outRange').textContent=(start?fmt(start):'—')+'  →  '+(end?fmt(end):'—');
+  $id('outIn').textContent=start?fmt(start):'—';
+  $id('outOut').textContent=end?fmt(end):'—';
+  $id('outNights').textContent=end?nights():'—';
+  var msg=$id('outMsg');msg.className='smsg ok';
+  var ok=true,txt='';
+  if(!start){txt=t.sel}
+  else if(!end){txt=t.pickEnd}
+  else{
+    var min=touchesHigh()?MIN_HIGH:MIN_LOW;
+    var extra=touchesHigh()?t.full:'';
+    if(nights()<min){ok=false;msg.className='smsg err';txt=t.few.replace('{n}',min).replace('{h}',extra)}
+    else{txt=(touchesHigh()?(L==='en'?'Select holiday periods · entire property · ':'Periodos selectos · propiedad completa · ')+MIN_HIGH+' '+(L==='en'?'nights min':'noches mín'):(L==='en'?'Regular season · '+MIN_LOW+'-night minimum':'Temporada regular · mínimo '+MIN_LOW+' noches'))}
+  }
+  if(ok&&(!$id('fName').value.trim()||!$id('fMail').value.trim())){ok=false;txt=txt?txt+' ':'';txt+=t.need}
+  msg.textContent=txt;
+  /* botones */
+  var bw=$id('btnWA'),bm=$id('btnMail');
+  if(ok){
+    var ref='CT-'+(Date.now().toString(36)+Math.random().toString(36).slice(2,4)).toUpperCase().slice(-8);
+    var body=payload(ref);
+    bw.removeAttribute('disabled');bm.removeAttribute('disabled');
+    bw.href='https://wa.me/'+WA+'?text='+encodeURIComponent(body);
+    bm.href='mailto:'+MAIL+'?subject='+encodeURIComponent((L==='en'?'Reservation inquiry ':'Consulta de reserva ')+ref+' — Casa Tauro')+'&body='+encodeURIComponent(body);
+    bw.dataset.ref=ref;bm.dataset.ref=ref;
+  }else{
+    bw.setAttribute('disabled','');bm.setAttribute('disabled','');
+    bw.removeAttribute('href');bm.removeAttribute('href');
+  }
+}
+function send(ch){
+  var bw=$id('btnWA'),bm=$id('btnMail');
+  var ref=(ch==='wa'?bw:bm).dataset.ref;
+  var href=(ch==='wa'?bw:bm).getAttribute('href');
+  var L=lang(),t=T[L];
+  $id('cRef').textContent=ref;
+  $id('cBox').textContent=payload(ref);
+  $id('cWA').href=bw.getAttribute('href')||href;$id('cMail').href=bm.getAttribute('href')||href;
+  $id('book').style.display='none';
+  var c=$id('confirm');c.classList.add('show');
+  c.scrollIntoView({behavior:'smooth',block:'start'});
+}
+ $id('btnWA').addEventListener('click',function(e){if($id('btnWA').hasAttribute('disabled')){e.preventDefault();return}e.preventDefault();send('wa')});
+ $id('btnMail').addEventListener('click',function(e){if($id('btnMail').hasAttribute('disabled')){e.preventDefault();return}e.preventDefault();send('mail')});
+ $id('cNew').addEventListener('click',function(){
+  start=null;end=null;
+  $id('confirm').classList.remove('show');
+  $id('book').style.display='';
+  window.scrollTo({top:$id('book').getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'});
+  render();
+});
+ $id('calPrev').addEventListener('click',function(){cur=new Date(cur.getFullYear(),cur.getMonth()-1,1);render()});
+ $id('calNext').addEventListener('click',function(){cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);render()});
+['fName','fMail','fTel','fMsg'].forEach(function(id){
+  $id(id).addEventListener('input',render);
+});
+/* re-render al cambiar idioma (sitio.js ya aplicó el cambio) */
+document.querySelectorAll('.langsw button').forEach(function(b){
+  b.addEventListener('click',function(){setTimeout(render,0)});
+});
+render();
+
+/* ─── BACKEND (Apps Script) — EN ESPERA ───
+   Cuando esté listo el despliegue:
+   1) var SCRIPT_URL='https://script.google.com/macros/s/XXXX/exec';
+   2) en send(): descomentar el fetch y enviar {ref, start, end, nights,
+      name, email, tel, msg, lang} con mode:'no-cors';
+   3) mantener el handoff WhatsApp/email como respaldo visual. */
+})();
+</script>
+</body>
+</html>
