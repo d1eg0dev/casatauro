@@ -55,9 +55,9 @@ html[lang=es] div.lang.es,html[lang=en] div.lang.en{display:block!important}
 .langsw i{opacity:.35;font-style:normal}
 
 /* ---------- menú fullscreen ---------- */
-#mm{position:fixed;inset:0;background:var(--paper);z-index:60;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:13vh 20px 44px;overflow:auto;transform:translateY(-102%);transition:transform .55s cubic-bezier(.7,0,.3,1)}
+#mm{position:fixed;inset:0;background:var(--paper);z-index:60;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:clamp(70px,9vh,110px) 20px 32px;overflow:auto;transform:translateY(-102%);transition:transform .55s cubic-bezier(.7,0,.3,1)}
 #mm.open{transform:none}
-#mm a.mlink{font-family:var(--disp);font-weight:400;font-size:clamp(30px,4.2vw,42px);line-height:1.3;padding:9px 16px;color:var(--ink);transition:color .3s}
+#mm a.mlink{font-family:var(--disp);font-weight:400;font-size:min(clamp(22px,2.4vw,30px),3.9vh);line-height:1.25;padding:min(6px,.7vh) 16px;color:var(--ink);transition:color .3s}
 #mm a.mlink:hover{color:var(--caquiD)}
 #mmX{position:absolute;top:26px;right:32px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;background:none;border:0;cursor:pointer;color:var(--ink)}
 .mm-foot{margin-top:44px;display:flex;align-items:center;gap:16px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);flex-wrap:wrap;justify-content:center}
@@ -65,7 +65,7 @@ html[lang=es] div.lang.es,html[lang=en] div.lang.en{display:block!important}
 .mm-foot a:hover{color:var(--caquiD)}
 .mm-foot i{font-style:normal;opacity:.4}
 .msub{display:flex;flex-direction:column;align-items:center}
-.mlink-t{font-family:var(--disp);font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.3;padding:8px 16px;color:var(--ink);background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:12px;transition:color .3s}
+.mlink-t{font-family:var(--disp);font-weight:400;font-size:min(clamp(22px,2.4vw,30px),3.9vh);line-height:1.25;padding:min(6px,.7vh) 16px;color:var(--ink);background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:12px;transition:color .3s}
 .mlink-t:hover{color:var(--caquiD)}
 .mlink-t i{font-style:normal;font-size:.5em;color:var(--caquiD);line-height:1;transition:transform .35s ease}
 .msub.open .mlink-t i{transform:rotate(45deg)}
@@ -123,13 +123,14 @@ h2{font-family:var(--disp);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-h
 .hsub{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2);margin:-14px 0 30px}
 .lede{font-family:var(--disp);font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.45;margin-bottom:28px}
 .body{font-size:15px;color:var(--ink2);max-width:680px;margin:0 auto}
+.body.l{margin:14px 0 0}
 .body p+p{margin-top:18px}
 .dark .eyebrow{color:var(--caquiL)}
 .dark .body{color:rgba(242,240,233,.78)}
 main{padding:100px 0 110px}
 main h1{font-family:var(--disp);font-weight:400;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;margin-bottom:18px}
 main .lead{font-size:15px;color:var(--ink2);max-width:780px}
-.amen{margin-top:64px;text-align:center;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);line-height:2.4;max-width:900px;margin-left:auto;margin-right:auto}
+.amen{margin-top:28px;text-align:left;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);line-height:2.4;max-width:900px}
 .note{font-size:12.5px;color:var(--ink2);line-height:1.8;max-width:640px;margin-top:16px}
 
 /* ---------- reveal + stagger ---------- */
