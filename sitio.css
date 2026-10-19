@@ -277,3 +277,77 @@ footer li a:hover{color:var(--caquiD)}
   .hero-eb,.hero h1,.hero-sub,.hero-cta{opacity:1;transform:none;animation:none}
   #waFloat{opacity:1;transform:none;pointer-events:auto}
 }
+
+/* =========================================================
+   v2 · Componentes compartidos (Gastronomía, Experiencias, Bodas)
+   ========================================================= */
+.zones{display:grid;gap:70px;margin-top:8px}
+.zrow{display:grid;grid-template-columns:7fr 5fr;gap:30px;align-items:end}
+.zrow.rev{grid-template-columns:5fr 7fr}
+.zrow.rev figure{order:2}
+.zrow figure{overflow:hidden;background:#e8e5dd;margin:0}
+.zrow img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:1.2s}
+.zrow figure:hover img{transform:scale(1.03)}
+.zcap{padding-bottom:4px}
+.zcap i{font-style:normal;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--caquiD);display:block;margin-bottom:6px}
+.zcap b{font-family:var(--disp);font-weight:400;font-size:clamp(1.4rem,2.4vw,1.8rem);display:block;margin-bottom:8px;line-height:1.25}
+.zcap p{font-size:14px;color:var(--ink2);max-width:440px}
+.zcap p+p{margin-top:10px}
+
+/* Bloque destacado (picnic, barco) */
+.feature{margin-top:64px;display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:center}
+.feature figure{margin:0;overflow:hidden;background:#e8e5dd}
+.feature figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.feature .fcopy h2{margin-bottom:18px}
+.feature .fcopy p{font-size:14.5px;color:var(--ink2);margin-bottom:14px}
+.facts{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
+.facts li b{font-weight:400;color:var(--ink);text-align:right}
+.price{display:flex;gap:28px;flex-wrap:wrap;margin-top:24px}
+.price div{border:1px solid var(--line);background:var(--card);padding:16px 20px;min-width:150px}
+.price small{display:block;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--caquiD);margin-bottom:6px}
+.price b{font-family:var(--disp);font-weight:400;font-size:1.6rem}
+.price span.u{display:block;font-size:11px;color:var(--ink2);margin-top:2px}
+
+/* Tarjetas de menú (picnic) */
+.menus{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.menus article{border:1px solid var(--line);background:var(--card);padding:22px 22px 20px}
+.menus h4{font-family:var(--disp);font-weight:400;font-size:1.25rem;margin-bottom:10px}
+.menus ul{list-style:none;margin:0;padding:0}
+.menus li{font-size:13px;color:var(--ink2);padding:5px 0;border-top:1px solid var(--line)}
+.menus li:first-child{border-top:0}
+
+/* Opciones en tarjetas */
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.opts article{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.opts figure{margin:0;overflow:hidden;background:#e8e5dd}
+.opts img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 1.2s}
+.opts article:hover img{transform:scale(1.04)}
+.opts .oc{padding:18px 20px 22px;border-top:1px solid var(--line);flex:1}
+.opts .oc i{font-style:normal;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--caquiD);display:block;margin-bottom:6px}
+.opts .oc b{font-family:var(--disp);font-weight:400;font-size:1.3rem;display:block;margin-bottom:8px;line-height:1.25}
+.opts .oc p{font-size:13.5px;color:var(--ink2)}
+.opts .oc .tag{display:block;margin-top:12px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+
+/* Lista simple a dos columnas */
+.cols2{columns:2;column-gap:44px;margin-top:26px;padding:0;list-style:none}
+.cols2 li{break-inside:avoid;padding:12px 0;border-top:1px solid var(--line);font-size:14px;color:var(--ink2)}
+.cols2 li b{display:block;font-weight:400;color:var(--ink);font-size:14.5px;margin-bottom:2px}
+
+@media(max-width:900px){
+  .menus,.opts{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .zrow,.zrow.rev{grid-template-columns:1fr}
+  .zrow.rev figure{order:0}
+  .zones{gap:52px}
+  .feature{grid-template-columns:1fr;gap:26px}
+  .feature figure img{aspect-ratio:4/3}
+  .menus,.opts{grid-template-columns:1fr}
+  .cols2{columns:1}
+}
+
+/* Video del hero (portada) */
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.hero video.on{opacity:1}
+.zcap .facts b{font-family:var(--sans);font-size:13.5px;display:inline;margin:0;line-height:inherit}

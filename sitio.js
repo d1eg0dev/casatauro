@@ -5,7 +5,7 @@
    · Menú hamburguesa fullscreen + submenu (.msub)
    · Header compacto al scrollear + WhatsApp flotante (>500px)
    · Reveal/stagger con IntersectionObserver
-   · Fallback de imágenes data-fb → picsum
+   · Fallback de imágenes data-fb → ocultar (sin fotos de stock)
    · Enlaces .waLink / .mailLink
    · Lightbox por grupos (.gal) y modo solo (hero, data-lb)
 
@@ -87,15 +87,32 @@ if(reduce||!('IntersectionObserver' in window)){
   revs.forEach(function(el){io.observe(el)});
 }
 
-/* ---------- fallback de imágenes data-fb → picsum ---------- */
+/* ---------- fallback de imágenes: si una foto falta, se oculta (nunca fotos de stock) ---------- */
 document.querySelectorAll('img[data-fb]').forEach(function(img){
   function fb(){
-    var p=(img.getAttribute('data-fb')||'').split('/');
-    if(p.length>=3)img.src='https://picsum.photos/seed/'+p[0]+'/'+p[1]+'/'+p[2];
+    var fig=img.closest('figure');
+    if(fig&&!fig.closest('.hero')){fig.style.display='none'}else{img.style.visibility='hidden'}
   }
-  img.addEventListener('error',function(){img.removeEventListener('error',fb);fb();});
+  img.addEventListener('error',fb,{once:true});
   if(img.complete&&img.naturalWidth===0)fb();
 });
+
+/* ---------- video del hero: se carga después de la página, nunca la bloquea ---------- */
+(function(){
+  var v=document.getElementById('heroVid'); if(!v) return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save=navigator.connection&&navigator.connection.saveData;
+  if(reduce||save){v.remove();return}
+  function start(){
+    var mob=window.innerWidth<768, base=mob?v.getAttribute('data-src-movil'):v.getAttribute('data-src');
+    var mp4=v.canPlayType('video/mp4; codecs="avc1.640028"');
+    v.src=mp4?base:base.replace(/\.mp4$/,'.webm');   /* H.264 primero; WebM si el navegador no lo soporta */
+    v.addEventListener('playing',function(){v.classList.add('on')},{once:true});
+    v.addEventListener('error',function(){v.remove()},{once:true});
+    var p=v.play(); if(p&&p.catch)p.catch(function(){});
+  }
+  if(document.readyState==='complete')setTimeout(start,300); else addEventListener('load',function(){setTimeout(start,300)});
+})();
 
 /* ---------- enlaces de contacto ---------- */
 document.querySelectorAll('a.waLink').forEach(function(a){
