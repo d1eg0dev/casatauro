@@ -20,9 +20,9 @@
 (function(){
 'use strict';
 var WA_NUMBER='524498905064';           /* +52 449 890 5064 */
-/* PLACEHOLDER-CONTACT: crear info@casatauro.com y redirigir a
-   info@casatauro.com.mx. Si no se crea, revertir a '.com.mx' aquí. */
-var MAIL='info@casatauro.com';
+/* PLACEHOLDER-CONTACT: crear contact@casatauro.com y redirigir a
+   contact@casatauro.com.mx. Si no se crea, revertir a '.com.mx' aquí. */
+var MAIL='contact@casatauro.com';
 var LANG_KEY='ct-lang';                 /* clave propia de Tauro (no ce-lang) */
 
 /* ---------- i18n ---------- */
